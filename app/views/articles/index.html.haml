@@ -3,7 +3,7 @@
   .row
     - @articles.each do |article|
       = link_to article do
-        .col-md-3.mt-5.text-white
+        .col-md-6.mt-5.text-white
           = image_tag 'foodie.jpg', alt: '', height: '300px', width: '300px'
           = article.title
           %br

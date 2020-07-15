@@ -2,7 +2,7 @@
   .container-fluid
     .navbar-header 
       - if user_signed_in?
-        = link_to "Your_gameplan_", articles_path, style: "black"
+        = link_to "Your_gameplan_", articles_path, style: "color: black;"
       - else
         = link_to "ゲームプラン", articles_path, style: "color: black;"
       - if user_signed_in?
