@@ -1,13 +1,21 @@
-%nav.navbar.navbar-default-lg.navbar-light.bg-light
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container-fluid
-    .navbar-header 
+    .navbar-brand 
       - if user_signed_in?
         = link_to "Your_gameplan_", articles_path, style: "color: black;"
       - else
         = link_to "ゲームプラン", articles_path, style: "color: black;"
-      - if user_signed_in?
-        = link_to '新規投稿', new_article_path, class: 'btn btn-primary'
-        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-warning'
-      - else  
-        = link_to '新規登録',  new_user_registration_path, class: 'btn btn-primary'
-        = link_to 'ログイン', new_user_session_path, class: 'btn btn-success'
+    .collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item
+          %a.nav-link Home
+        %li.nav-item
+          %a.nav-link About
+      %ul.navbar-nav
+        %li.nav-item
+          - if user_signed_in?
+            = link_to '新規投稿', new_article_path, class: 'btn btn-primary'
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-warning'
+          - else  
+            = link_to '新規登録',  new_user_registration_path, class: 'btn btn-primary'
+            = link_to 'ログイン', new_user_session_path, class: 'btn btn-success'
