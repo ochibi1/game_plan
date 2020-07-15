@@ -1,0 +1,7 @@
+.container
+  %h1.text-center 
+    投稿の編集
+.row.justify-content-center
+  .col-md-6.mt-5.text-center
+    = image_tag 'foodie.jpg', alt: '', height: '500px', width: '500px'
+    = render 'form', article: @article

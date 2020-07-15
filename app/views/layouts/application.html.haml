@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title GamePlan
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %body.text-white.bg-dark
+    = render 'layouts/header'
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: "flash flash__#{key}")
+    = yield
