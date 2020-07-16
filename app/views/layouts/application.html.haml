@@ -7,8 +7,7 @@
     = csp_meta_tag
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-  %body.text-white.bg-dark
+  %body.text-white.bg-secondary
     = render 'layouts/header'
-    - flash.each do |key, value|
-      = content_tag(:div, value, class: "flash flash__#{key}")
+    = render 'layouts/notifications'
     = yield
