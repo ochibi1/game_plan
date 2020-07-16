@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :body
       t.string :img
+      t.references :user
 
       t.timestamps
     end
