@@ -1,5 +1,7 @@
 = form_for article do |f|
     .form_group
+    = f.attachment_field :img
+    .form_group
     = f.label :title, "title", style: "margin-top: 10px;"
     = f.text_field :title, class: 'form_control'
     .form_group
