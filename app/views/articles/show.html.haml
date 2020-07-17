@@ -3,8 +3,10 @@
     = @article.title
 .row.justify-content-center
   .col-md-6.mt-5
-    = image_tag 'foodie.jpg', alt: '', height: '500px', width: '500px'
-    = image_tag attachment_url(@article, :img, :fill, 300, 300, format: "jpg")
+    - if @article.img_id.present?
+      = image_tag attachment_url(@article, :img), alt: '', height: '500px', width: '500px'
+    - else
+      = image_tag 'foodie.jpg', alt: '', height: '500px', width: '500px'
     %br
       %p.text-weight-bold
         = @article.body
