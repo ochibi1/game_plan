@@ -4,6 +4,8 @@ Rails.application.routes.draw do
         sessions: 'users/sessions'
       }
 
-  resources :articles
   root "articles#index"
+  resources :articles do
+    resources :comments, only: :create
+  end
 end
