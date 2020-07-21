@@ -61,3 +61,4 @@ gem 'devise'
 gem 'rails-i18n', '~> 6.0.0' 
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+gem 'font-awesome-rails'
