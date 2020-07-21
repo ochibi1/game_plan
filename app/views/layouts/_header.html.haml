@@ -2,9 +2,9 @@
   .container-fluid
     .navbar-brand 
       - if user_signed_in?
-        = link_to "Your_gameplan_", articles_path, style: "color: black;"
+        = link_to "Your_Fitter_", articles_path, style: "color: black;"
       - else
-        = link_to "ゲームプラン", articles_path, style: "color: black;"
+        = link_to "Fitter", articles_path, style: "color: black;"
     .collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
         %li.nav-item

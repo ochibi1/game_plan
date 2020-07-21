@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :move_to_index, except: [:index, :show]
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   before_action :limit_user, only: [:edit, :update, :destroy]
@@ -13,6 +13,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @user = @article.user
+    @comment = Comment.new
+    @comments = @article.comments.includes(:user)
   end
 
   def edit
@@ -25,7 +27,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to @article, notice: '作成しました'
+      redirect_to root_path, notice: '新規投稿が完了しました'
     else
       render :new, alert: '作成できませんでした'
     end

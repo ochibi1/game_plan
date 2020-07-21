@@ -1,18 +1,28 @@
 .container
   %h1.text-center 
     = @article.title
-  .row
+  .row.mb-5
+    .col
     .col-md-6.mx-5
       - if @article.img_id.present?
         = image_tag attachment_url(@article, :img), alt: '', height: '500px', width: '500px'
       - else
-        = image_tag 'foodie.jpg', alt: '', height: '500px', width: '500px'
+        = image_tag 'background.jpg', alt: '', height: '500px', width: '500px'
       %br
         %p.text-weight-bold
           = @article.body
       %br
         %p.text-right
           = l @article.created_at, format: :short
-      %br
       = link_to '投稿の編集', edit_article_path(@article), class: 'btn btn-primary'
       = link_to '投稿を削除', article_path(@article), method: :delete, data: {confirm: "投稿を削除してもよろしいですか?" }, class: 'btn btn-danger'
+    .col
+  .row.mt-2
+    .col
+    .col-md-6.mx-5
+      = form_with model: [@article, @comment], id: 'comment_id', local: true do |f|
+        .form_group
+        = f.label :title, "コメント", style: "margin-top: 10px;"
+        = f.text_area :text, class: "form-control"
+        = f.submit "送信", class: "btn btn-success", style: "margin: 5px;"
+    .col
