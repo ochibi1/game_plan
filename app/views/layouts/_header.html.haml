@@ -2,7 +2,7 @@
   .container-fluid
     .navbar-brand 
       - if user_signed_in?
-        = link_to "Your_Fitter_", articles_path, style: "color: black;"
+        = link_to "Your_Fitter", articles_path, style: "color: black;"
       - else
         = link_to "Fitter", articles_path, style: "color: black;"
     .collapse.navbar-collapse
@@ -16,6 +16,7 @@
           - if user_signed_in?
             = link_to '新規投稿', new_article_path, class: 'btn btn-primary'
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-warning'
+            = link_to 'マイページ', user_path(current_user), class: 'btn btn-success'
           - else  
             = link_to '新規登録',  new_user_registration_path, class: 'btn btn-primary'
             = link_to 'ログイン', new_user_session_path, class: 'btn btn-success'

@@ -11,7 +11,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
     @user = @article.user
     @comment = Comment.new
     @comments = @article.comments.includes(:user)
@@ -49,15 +48,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  private
   def find_article
     @article = Article.find(params[:id])
   end
-
-  def article_params
-    params.require(:article).permit(:title, :body, :img).merge(user_id: current_user.id)
-  end
-
+  
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
@@ -66,5 +60,11 @@ class ArticlesController < ApplicationController
     if @article.user != current_user
       redirect_to root_path, alert: '他の人の投稿なので、編集できません。'
     end
+  end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title, :body, :img).merge(user_id: current_user.id)
   end
 end

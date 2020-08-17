@@ -23,9 +23,16 @@
   .row.mt-2
     .col
     .col-md-6.mx-5
-      = form_with model: [@article, @comment], id: 'comment_id', local: true do |f|
+      %h6 [コメント一覧]
+      - @comments.each do |comment|
+        %p 
+        = comment.text
+    .col
+  .row.mt-2
+    .col
+    .col-md-6.mx-5
+      = form_with model: [@article, @comment], url: article_comments_path(@article), id: 'comment_id', local: true do |f|
         .form_group
-        = f.label :title, "コメント", style: "margin-top: 10px;"
-        = f.text_area :text, class: "form-control"
+        = f.text_area :text, placeholder: "コメントを入力する", class: "form-control"
         = f.submit "送信", class: "btn btn-success", style: "margin: 5px;"
     .col

@@ -6,14 +6,12 @@
       = link_to article do
         .col-md-6.mt-5.ml-5.text-white
           - if article.img_id.present?
-            = image_tag attachment_url(article, :img), alt: '', height: '100px', width: '100px', class: "rounded-circle"
+            = image_tag attachment_url(article, :img), alt: '', height: '200px', width: '200px', class: "rounded-circle"
           - else
-            = image_tag 'background.jpg', alt: '', height: '100px', width: '100px', class: "rounded-circle"
+            = image_tag 'background.jpg', alt: '', height: '200px', width: '200px', class: "rounded-circle"
           = article.title
           %br
           = article.user.nickname
-          %br
-          = l article.created_at, format: :short
 
 -# <% if user_signed_in? %>
 -#     <% if tweet.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->

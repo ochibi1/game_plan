@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
   devise_for :users, controllers: {
         registrations: 'users/registrations',
         sessions: 'users/sessions'
@@ -7,8 +6,8 @@ Rails.application.routes.draw do
 
   root "articles#index"
   resources :articles do
-    resources :comments, only: :create
+    resource :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: :show
+  resources :users
 end
