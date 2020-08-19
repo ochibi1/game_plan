@@ -25,8 +25,10 @@
     .col-md-6.mx-5
       %h6 [コメント一覧]
       - @comments.each do |comment|
-        %p 
-        = comment.text
+        %ul
+          %li
+            = "#{comment.user.nickname} :   「#{comment.text}」"
+            = link_to "コメントを削除", article_comments_path(article_id: @article, id: comment.id), method: :delete
     .col
   .row.mt-2
     .col

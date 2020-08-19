@@ -1,7 +1,7 @@
 .container
   .row.pl-5.mt-5.text-info.bg-white
     Continuators Ranking
-  .row
+  .row.body
     - @articles.each do |article|
       = link_to article do
         .col-md-6.mt-5.ml-5.text-white
@@ -9,17 +9,24 @@
             = image_tag attachment_url(article, :img), alt: '', height: '200px', width: '200px', class: "rounded-circle"
           - else
             = image_tag 'background.jpg', alt: '', height: '200px', width: '200px', class: "rounded-circle"
+          %h4
           = article.title
           %br
           = article.user.nickname
-
--# <% if user_signed_in? %>
--#     <% if tweet.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
--#         <p><span>お気に入り解除: </span><%=link_to tweet.favorites.count, tweet_favorites_path(tweet.id), method: :delete %></p>
--#     <% else %>
--#         <p><span>お気に入り登録: </span><%=link_to tweet.favorites.count, tweet_favorites_path(tweet.id), method: :post %></p>
--#     <% end %>
--#   <% else %>
--#     <p><span>お気に入り数: </span><%= tweet.favorites.count %></p>
--#   <% end %>
--#   <!-- ここまで -->
+        - if user_signed_in?
+          -# - if current_user.like(article)
+        -#     - @favorites.each do |favorite|
+        -#       - if favorite.article_id == article.id
+        -#         = link_to article_favorites_path(article, current_user.like(article).id), method: :delete, remote: true do
+        -#           %i.fas.fa-star
+        -#         お気に入り
+        -#       = article.favorites.count
+        -#   - else
+        -#     = link_to article_favorites_path(article), method: :post, remote: true do
+        -#       %i.far.fa-star
+        -#     お気に入り
+        -#     = article.favorites.count
+        -# - else
+        -#   = icon('fa', 'star')
+        -#   お気に入り
+        -#   = article.favorites.count 
