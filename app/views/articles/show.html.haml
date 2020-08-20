@@ -1,6 +1,6 @@
 .container
   %h1.text-center 
-    = @article.title
+    = "タイトル: #{@article.title}"
   .row.mb-5
     .col
     .col-md-6.mx-5
@@ -10,7 +10,7 @@
         = image_tag 'background.jpg', alt: '', height: '500px', width: '500px'
       %br
         %p.text-weight-bold
-          = @article.body
+          = "本文：#{@article.body}"
       %br
         %p.text-right
           = l @article.created_at, format: :short
